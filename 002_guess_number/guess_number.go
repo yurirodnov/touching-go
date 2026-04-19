@@ -6,9 +6,6 @@ import (
 )
 
 func main() {
-	
-
-
 	var win int = 0
 	var lose int = 0
 	var try int = 0
