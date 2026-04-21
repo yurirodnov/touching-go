@@ -13,7 +13,6 @@ func main() {
 	var min int = 1
 	var max int = 5
 
-
 	fmt.Println("Welcome to Guessing number game!")
 	fmt.Printf("Guess number from %d to %d:\n", min, max)
 	fmt.Println("Push Ctrl + C to stop game")
