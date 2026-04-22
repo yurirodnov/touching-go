@@ -51,10 +51,9 @@ Interested in the code? Wanna run it locally?
 Each app folder is a standalone Go project:
 
 ```text
-/browser-games
+/touching-go
   ├── 001_health_checker/
   ├── 002_guess_number/
   ├── 003_binary_decimal/
   ├── and others...
-  └── README.md
 ```
