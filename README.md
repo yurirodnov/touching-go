@@ -1,4 +1,4 @@
-# Golang applications
+# 🐹 Golang applications
 
 Small Golang projects i make to explore this language.
 
@@ -27,22 +27,34 @@ Interested in the code? Wanna run it locally?
     cd 001_health_checker (or any another folder)
     ```
 3.  **Compile from source:**
+
     ```bash
-    go build go build .\health_checker.go
+    go build .
     ```
-4.  **Run compiled programm (Windows example):**
+
+4.  **Run compiled program:**
+
+    **Windows:**
+
     ```bash
-    .\binary_decimal.exe
+    .\health_checker.exe
+    ```
+
+    **Linux / macOS:**
+
+    ```bash
+    ./health_checker
     ```
 
 ## 📂 Project Structure
 
-Each game is a standalone Vite project:
+Each app folder is a standalone Go project:
 
 ```text
 /browser-games
   ├── 001_health_checker/
   ├── 002_guess_number/
   ├── 003_binary_decimal/
+  ├── and others...
   └── README.md
 ```
