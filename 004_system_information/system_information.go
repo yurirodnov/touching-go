@@ -1,3 +1,5 @@
+// Shows information about your system
+
 package main
 
 import (
@@ -6,6 +8,7 @@ import (
 	"os/user"
 	"runtime"
 
+	"github.com/shirou/gopsutil/v4/cpu"
 	"github.com/shirou/gopsutil/v4/mem"
 )
 
@@ -33,11 +36,14 @@ func convertBytes(b uint64) string {
 
 func main() {
 
-	// OS block
+	fmt.Print("\n")
+	// OS info block
+	fmt.Println("Operational system")
+	fmt.Println("---------------------------->")
+
 	osInfo := runtime.GOOS
 
 	fmt.Printf("Operational system name: %s\n", osInfo)
-
 
 	currentUser, err := user.Current()
 	if(err != nil){
@@ -54,11 +60,14 @@ func main() {
 	}
 
 	fmt.Printf("Hostname: %v\n", hostname)
+	fmt.Println("<----------------------------")
+	fmt.Print("\n")
 
-	// Memory block
-	fmt.Println("-------")
+	// Memory info block
+
 	fmt.Println("Memory")
-	fmt.Println("-------")
+	fmt.Println("---------------------------->")
+
 	v, _ := mem.VirtualMemory()
 
 	var totalMemory string = convertBytes(v.Total)
@@ -70,10 +79,22 @@ func main() {
 	fmt.Printf("Total memory: %v\n", totalMemory)
 	fmt.Printf("Used memory: %v (%d%%)\n", usedMemory, usedMemoryPercent)
 	fmt.Printf("Available memory: %v (%d%%)\n", availableMemory, availableMemoryPercent)
-	
+	fmt.Println("<----------------------------")
+	fmt.Print("\n")
 
+	// CPU info block
+	fmt.Println("CPU")
+	fmt.Println("---------------------------->")
 
+	cpuInfo, _ := cpu.Info()
+	cpuCoresLogical, _ := cpu.Counts(true)
+	cpuCoresPhysical, _ := cpu.Counts(false)
+		
 
+	fmt.Printf("CPU name: %s\n", cpuInfo[0].ModelName)
+	fmt.Printf("CPU cores logical: %d\n", cpuCoresLogical)
+	fmt.Printf("CPU cores physical: %d\n", cpuCoresPhysical)
+	fmt.Println("<----------------------------")
 
 
 	
