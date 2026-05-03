@@ -7,8 +7,11 @@ import (
 	"os"
 	"os/user"
 	"runtime"
+	"time"
 
 	"github.com/shirou/gopsutil/v4/cpu"
+	"github.com/shirou/gopsutil/v4/disk"
+	"github.com/shirou/gopsutil/v4/host"
 	"github.com/shirou/gopsutil/v4/mem"
 )
 
@@ -38,8 +41,19 @@ func main() {
 
 	fmt.Print("\n")
 	// OS info block
+
+	fmt.Println("SYSTEM INFORMATION")
+	fmt.Println("---------------------------->")
+
+	fmt.Print("\n")
+
 	fmt.Println("Operational system")
 	fmt.Println("---------------------------->")
+	
+	hostInfo, _ := host.Info();
+	uptime := time.Duration(hostInfo.Uptime) * time.Second	
+
+	fmt.Printf("System uptime: %v\n", uptime)
 
 	osInfo := runtime.GOOS
 
@@ -48,7 +62,7 @@ func main() {
 	currentUser, err := user.Current()
 	if(err != nil){
 		fmt.Printf("Getting user error: %v", err)
-	}
+	}	
 	
 	fmt.Printf("User name: %v\n", currentUser.Name)
 	fmt.Printf("Home directory: %v\n", currentUser.HomeDir)
@@ -88,13 +102,25 @@ func main() {
 
 	cpuInfo, _ := cpu.Info()
 	cpuCoresLogical, _ := cpu.Counts(true)
-	cpuCoresPhysical, _ := cpu.Counts(false)
-		
+	cpuCoresPhysical, _ := cpu.Counts(false)		
 
 	fmt.Printf("CPU name: %s\n", cpuInfo[0].ModelName)
 	fmt.Printf("CPU cores logical: %d\n", cpuCoresLogical)
 	fmt.Printf("CPU cores physical: %d\n", cpuCoresPhysical)
+
+
+	cpuUtillization, _ := cpu.Percent(time.Second, false)
+	fmt.Printf("CPU utilaztion: %.2f%%\n", cpuUtillization[0])
+
 	fmt.Println("<----------------------------")
+
+	// Disk info block
+	fmt.Println("Disk")
+	fmt.Println("---------------------------->")
+	diskInfo, _ := disk.Partitions(true)
+	fmt.Printf("Disk %v info\n", diskInfo[0].Device) 
+	fmt.Println("<----------------------------")
+
 
 
 	
