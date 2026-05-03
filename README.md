@@ -13,13 +13,13 @@ Interested in the code? Wanna run it locally?
 1.  **Clone the repo:**
 
     ```bash
-    git clone https://github.com/yurirodnov/touching-go
+    git clone https://github.com/yurirodnov/go-apps.git
     ```
 
     or via SSH
 
     ```bash
-    git clone https://github.com/yurirodnov/touching-go
+    git clone git@github.com:yurirodnov/go-apps.git
     ```
 
 2.  **Go to a specific directory:**
@@ -51,7 +51,7 @@ Interested in the code? Wanna run it locally?
 Each app folder is a standalone Go project:
 
 ```text
-/touching-go
+/go-apps
   ├── 001_health_checker/
   ├── 002_guess_number/
   ├── 003_binary_decimal/
